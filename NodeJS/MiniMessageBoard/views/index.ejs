@@ -1,13 +1,34 @@
+<% const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] %>
+
 <html>
     <head>
-        <title> Mini Message Board</title> 
+        <title> <%= title %></title> 
+        <style>
+            html, body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                gap: 25px;
+            }
+
+            .message-post {
+                border: 1px solid black;
+                width: 500px;
+            }
+
+        </style>
     </head>
     <body> 
-        <h1> Express App Setup Success </h1> 
-        <% if (message) { %> 
-            <h1> <%= message %> </h1>
-        <% } else { %> 
-            <h1> No message </h1> 
-        <% } %> 
+        <a href="/new">Make a post</a> 
+        <% for (var i = 0; i < messages.length; i++) { %>
+            <% const date = messages[i].added %>
+            <div class="message-post">
+                <h1> <%= messages[i].user %> </h1>
+                <h1> <%= messages[i].text %> </h1>
+                <h1> Date Posted: <%= months[date.getMonth()] %> <%= date.getDate() %> </h1>
+            </div>
+        <% } %>
     </body>
 </html>
