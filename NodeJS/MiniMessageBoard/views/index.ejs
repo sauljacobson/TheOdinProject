@@ -18,16 +18,35 @@
                 width: 500px;
             }
 
+            .post-header {
+                display: flex;
+                justify-content: space-between;
+                padding: 0px 15px 0px 15px;
+                border: 0.5px solid gainsboro;
+            }
+
+            a {
+                background-color: white;
+                color: black;
+                text-decoration: none;
+                border: 1px solid black;
+                padding: 10px;
+                cursor:pointer;
+            }
+
+           
         </style>
     </head>
     <body> 
-        <a href="/new">Make a post</a> 
+        <a style="margin-top: 50px;" href="/new">Make a post</a> 
         <% for (var i = 0; i < messages.length; i++) { %>
             <% const date = messages[i].added %>
             <div class="message-post">
-                <h1> <%= messages[i].user %> </h1>
-                <h1> <%= messages[i].text %> </h1>
-                <h1> Date Posted: <%= months[date.getMonth()] %> <%= date.getDate() %> </h1>
+                <div class="post-header">
+                    <p> <%= messages[i].user %> </p> 
+                    <p> Posted on: <%= months[date.getMonth()] %> <%= date.getDate() %> </p>
+                </div>
+                <p style="margin-left: 15px;"> <%= messages[i].text %> </p>
             </div>
         <% } %>
     </body>
